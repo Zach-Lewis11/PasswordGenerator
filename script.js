@@ -10,38 +10,39 @@ function writePassword() {
 }
 
  // Add event listener to generate button
- generateBtn.addEventListener("click", generatePassword());
+ generateBtn.addEventListener("click", writePassword);
  
- // User prompts for password criteria after generate password is clicked
- 
- function userSelect(){
-  let passLength = +prompt("How long do you want you password?");
-  if (passLength > 26) {
-    alert("Please enter a number between 8 and 26")
-  } else if (passLength < 8){
-    alert("Please enter a number between 8 and 26")
-  } else if(isNaN(passLength)) {
-    alert("Please make sure to input a Number between 8 and 26")
-  } else {
-  var upperCaseSelect = confirm("Do you want to include Upper Case letters?");
-  var lowerCaseSelect = confirm("Do you want to include Lower Case letters?");
-  var numberSelect =confirm("Do you want to include Numbers?");
-  var symbolSelect = confirm("Do you want to include Symbols?");
-  }
-  // if (upperCaseSelect === false && lowerCaseSelect === false && numberSelect === false && symbolSelect ===false){
-  //      alert("Please select one or more criteria.")
-  //      }
-  var myArr = [passLength, upperCaseSelect, lowerCaseSelect, numberSelect, symbolSelect];
-
-  // if(upperCaseSelect === false && lowerCaseSelect === false && numberSelect === false && symbolSelect ===false){
-  //   alert("Please select one or more criteria.")
-  // }
-  return myArr;
- }
+ // User prompts for password criteria 
  
  // Generate the random password function 
  
  function generatePassword(){
+   function userSelect(){
+    let passLength = +prompt("How long do you want you password?");
+    if (passLength > 26) {
+      alert("Please enter a number between 8 and 26")
+    } else if (passLength < 8){
+      alert("Please enter a number between 8 and 26")
+    } else if(isNaN(passLength)) {
+      alert("Please make sure to input a Number between 8 and 26")
+    } else {
+    var upperCaseSelect = confirm("Do you want to include Upper Case letters?");
+    var lowerCaseSelect = confirm("Do you want to include Lower Case letters?");
+    var numberSelect =confirm("Do you want to include Numbers?");
+    var symbolSelect = confirm("Do you want to include Symbols?");
+    }
+    // if (upperCaseSelect === false && lowerCaseSelect === false && numberSelect === false && symbolSelect ===false){
+    //      alert("Please select one or more criteria.")
+    //      }
+    var myArr = [passLength, upperCaseSelect, lowerCaseSelect, numberSelect, symbolSelect];
+  
+    // if(upperCaseSelect === false && lowerCaseSelect === false && numberSelect === false && symbolSelect ===false){
+    //   alert("Please select one or more criteria.")
+    // }
+  
+    return myArr;
+   }
+   
    var myNewArr = userSelect();
    var length = myNewArr[0];
    var upperCaseSelect = myNewArr[1];
