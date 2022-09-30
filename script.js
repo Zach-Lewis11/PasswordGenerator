@@ -10,98 +10,102 @@ function writePassword() {
 }
 
  // Add event listener to generate button
- generateBtn.addEventListener("click", writePassword());
+ generateBtn.addEventListener("click", generatePassword());
  
- // User prompts for password criteria 
+ // User prompts for password criteria after generate password is clicked
+ 
  function userSelect(){
   let passLength = +prompt("How long do you want you password?");
-  let upperCaseSelect = confirm("Do you want to include Upper Case letters?");
-  let lowerCaseSelect = confirm("Do you want to include Lower Case letters?");
-  let numberSelect =confirm("Do you want to include Numbers?");
-  let symbolSelect = confirm("Do you want to include Symbols?");
-
+  if (passLength > 26) {
+    alert("Please enter a number between 8 and 26")
+  } else if (passLength < 8){
+    alert("Please enter a number between 8 and 26")
+  } else if(isNaN(passLength)) {
+    alert("Please make sure to input a Number between 8 and 26")
+  } else {
+  var upperCaseSelect = confirm("Do you want to include Upper Case letters?");
+  var lowerCaseSelect = confirm("Do you want to include Lower Case letters?");
+  var numberSelect =confirm("Do you want to include Numbers?");
+  var symbolSelect = confirm("Do you want to include Symbols?");
+  }
+  // if (upperCaseSelect === false && lowerCaseSelect === false && numberSelect === false && symbolSelect ===false){
+  //      alert("Please select one or more criteria.")
+  //      }
   var myArr = [passLength, upperCaseSelect, lowerCaseSelect, numberSelect, symbolSelect];
 
   // if(upperCaseSelect === false && lowerCaseSelect === false && numberSelect === false && symbolSelect ===false){
   //   alert("Please select one or more criteria.")
   // }
-
   return myArr;
  }
-
-  //Array for random Characters 
-  // Generate the random password function 
-  
-  function generatePassword(){
-
-  // var randomFunction = {
-  //   upper: getRandomUpperCase(),
-  //   lower: getRandomLowerCase(),
-  //   numbers: getRandomNumber(),
-  //   symbol: getRandomSymbol()
-  //  } 
-
+ 
+ // Generate the random password function 
+ 
+ function generatePassword(){
    var myNewArr = userSelect();
-  //var myArr = [passLength, upperCaseSelect, lowerCaseSelect, numberSelect, symbolSelect];
    var length = myNewArr[0];
    var upperCaseSelect = myNewArr[1];
    var lowerCaseSelect = myNewArr[2];
    var numberSelect = myNewArr[3];
    var symbolSelect = myNewArr[4];
    var password = '';
-
-  for(let i =0; i < length; i++) {
-    //picks a number integer 1 and 3 for array index
-
-  
-    randomFunction = [getRandomUpperCase(), getRandomLowerCase(), getRandomNumber(), getRandomSymbol()]
-  
-    if (!upperCaseSelect) randomFunction[0] = null;
-    if (!lowerCaseSelect) randomFunction[1] = null;
-    if (!numberSelect) randomFunction[2] = null;
-    if (!symbolSelect) randomFunction[3] = null;
-    //need to pick a value at random from randomFunction, if null pick a diff one, and append it to password string
-    while(true){
-      var y = getRandomInt(4);
-    if(randomFunction[y] === null){
+   
+   for(let i =0; i < length; i++) {
+     
+     //Array for random Characters 
+     
+     randomFunction = [getRandomUpperCase(), getRandomLowerCase(), getRandomNumber(), getRandomSymbol()]
+     
+     if (!upperCaseSelect) randomFunction[0] = null;
+     if (!lowerCaseSelect) randomFunction[1] = null;
+     if (!numberSelect) randomFunction[2] = null;
+     if (!symbolSelect) randomFunction[3] = null;
+     //need to pick a value at random from randomFunction, if null pick a diff one, and append it to password string
+     while(true){
+       var y = getRandomInt(4);
+       if(randomFunction[y] === null){
       }
       else{
         password = password + randomFunction[y];
         break
       }
     } console.log(password)
-    
   }
-    return password
+  return password
 };
 
+//picks a number integer between 0 and 3 for array index
 function getRandomInt(x) {
   return Math.floor(Math.random() * x);
 }
-  //these functions generate random characters for password
+//these functions generate random characters for password
+
+function getRandomUpperCase() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
+function getRandomLowerCase() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
+function getRandomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+function getRandomSymbol() {
+  const symbols = "!@#$%^&*()_+~\\`|}{[]:;?><,./-="
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+
+
+
+// var randomFunction = {
+  //   upper: getRandomUpperCase(),
+  //   lower: getRandomLowerCase(),
+  //   numbers: getRandomNumber(),
+  //   symbol: getRandomSymbol()
+  //  } 
   
-  function getRandomUpperCase() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-  }
   
-  function getRandomLowerCase() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-  }
-  
-  function getRandomNumber() {
-    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-  }
-  
-  function getRandomSymbol() {
-    const symbols = "!@#$%^&*()_+~\\`|}{[]:;?><,./-="
-    return symbols[Math.floor(Math.random() * symbols.length)];
-  }
-  
-  
-  
-  
-  
-  
+  //var myArr = [passLength, upperCaseSelect, lowerCaseSelect, numberSelect, symbolSelect];
   
   // if(typesCount === 0) {
   //   return alert("Please confirm one or more items");
