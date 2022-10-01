@@ -11,4 +11,6 @@
   to use this project, when that page loads in, click generate password. This action will bring up a promt asking how many chaarecters you would like the password to be. if you end a amount less that 8, greater than 26, or someting other than a number, you will be alerted to please enter a number between 8 and 26. If, however, you enter an amount between 8 and 26, you will then be giving a series of confermations, asking if you would like the password to include upper case letters, lower case letters, numbers, and special symbols. If you have said ' Confirm' to one or more catigories, the randomized password will then be displayed in the text box on the page. 
   
   
-## 
+## License
+
+MIT License
